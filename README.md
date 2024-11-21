@@ -1,8 +1,4 @@
-Here’s the updated **README.md** with the **CC BY-NC-SA 4.0** license details:
-
----
-
-## **File Manager Application**
+# **File Manager Application**
 
 This is a Laravel-based file management system that supports user authentication, folder navigation, file uploads, previews, and admin-specific functionality for managing users and groups.
 
