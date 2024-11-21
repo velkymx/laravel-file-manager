@@ -245,8 +245,7 @@
     </div>
 
     <!-- Image Preview Modal -->
-    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -259,9 +258,59 @@
             </div>
         </div>
     </div>
+    <!-- File Upload Modal -->
+    <div class="modal fade" id="uploadFileModal" tabindex="-1" aria-labelledby="uploadFileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('files.upload') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="current_folder" value="{{ $currentFolder }}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="uploadFileModalLabel">Upload Files</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="files" class="form-label">Choose Files</label>
+                            <input type="file" class="form-control" id="files" name="files[]" multiple required>
+                            <small class="text-muted">Hold Ctrl (Cmd on Mac) to select multiple files.</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Upload Files</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Create Folder Modal -->
+    <div class="modal fade" id="createFolderModal" tabindex="-1" aria-labelledby="createFolderModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ route('folders.create') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="current_folder" value="{{ $currentFolder }}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createFolderModalLabel">Create Folder</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="folder_name" class="form-label">Folder Name</label>
+                            <input type="text" class="form-control" id="folder_name" name="folder_name" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Create Folder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         const listViewButton = document.getElementById('listViewButton');
         const gridViewButton = document.getElementById('gridViewButton');
@@ -282,4 +331,4 @@
             document.getElementById('previewImage').src = url;
         }
     </script>
-    @endsection
+@endsection

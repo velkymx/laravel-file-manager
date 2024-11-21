@@ -13,13 +13,15 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- Bootswatch Theme (Flatly) -->
+    <link href="https://bootswatch.com/5/flatly/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Compiled App Assets -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    
-    <link href="https://bootswatch.com/5/flatly/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
