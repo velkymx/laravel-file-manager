@@ -1,66 +1,159 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Here’s the updated **README.md** with the **CC BY-NC-SA 4.0** license details:
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+## **File Manager Application**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a Laravel-based file management system that supports user authentication, folder navigation, file uploads, previews, and admin-specific functionality for managing users and groups.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### **Requirements**
 
-## Learning Laravel
+- PHP 8.1 or higher
+- Composer 2.x
+- Node.js 16.x or higher
+- NPM 7.x or higher
+- MariaDB or MySQL database
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### **Setup Instructions**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### **1. Clone the Repository**
 
-## Laravel Sponsors
+```bash
+git clone <repository-url>
+cd file-manager
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Replace `<repository-url>` with your repository URL.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### **2. Install PHP Dependencies**
 
-## Contributing
+Ensure Composer is installed on your system, then run:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+composer install
+```
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### **3. Install JavaScript Dependencies**
 
-## Security Vulnerabilities
+Ensure Node.js and NPM are installed on your system, then run:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+npm install
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### **4. Configure Environment**
+
+1. Copy the `.env.example` file to create a `.env` file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Update the `.env` file with your database credentials and other environment settings. For example:
+
+   ```plaintext
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=file_manager
+   DB_USERNAME=root
+   DB_PASSWORD=your_password
+   ```
+
+3. Set the application key:
+
+   ```bash
+   php artisan key:generate
+   ```
+
+---
+
+#### **5. Run Migrations and Seeders**
+
+Set up the database schema and seed initial data:
+
+```bash
+php artisan migrate --seed
+```
+
+---
+
+#### **6. Compile Frontend Assets**
+
+Build CSS and JavaScript assets:
+
+```bash
+npm run dev
+```
+
+For production builds, use:
+
+```bash
+npm run build
+```
+
+---
+
+#### **7. Start the Development Server**
+
+Run the Laravel development server:
+
+```bash
+php artisan serve
+```
+
+By default, the application will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+---
+
+### **Additional Notes**
+
+#### **Admin Access**
+To access admin features, create an admin user or update an existing user in the database:
+
+1. Log in to your database management tool (e.g., phpMyAdmin, MySQL CLI).
+2. Update the `is_admin` field of a user in the `users` table:
+
+   ```sql
+   UPDATE users SET is_admin = 1 WHERE email = 'admin@example.com';
+   ```
+
+#### **Run Tests**
+To ensure everything is working, you can run the test suite:
+
+```bash
+php artisan test
+```
+
+#### **Clear Caches**
+If you encounter any issues, clear the application cache:
+
+```bash
+php artisan optimize:clear
+```
+
+---
+
+### **Common Commands**
+
+- **Run migrations**: `php artisan migrate`
+- **Rollback migrations**: `php artisan migrate:rollback`
+- **Seed the database**: `php artisan db:seed`
+- **Run the server**: `php artisan serve`
+- **Compile assets**: `npm run dev` or `npm run build`
+
+---
+
+### **License**
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
