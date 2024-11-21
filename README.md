@@ -8,6 +8,12 @@ This is a Laravel-based file management system that supports user authentication
 
 ---
 
+### **Screenshot**
+
+![File Manager Screenshot](screenshot.png)
+
+---
+
 ### **Requirements**
 
 - PHP 8.1 or higher
